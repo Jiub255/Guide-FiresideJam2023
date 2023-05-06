@@ -1,0 +1,7 @@
+
+TODO:
+
+Paint walkable paths on the terrain for NavMeshAgent to follow. 
+
+Put big colliders on the paths to trigger events, and one on the top of the mountain end goal area. 
+
