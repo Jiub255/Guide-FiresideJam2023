@@ -6,7 +6,9 @@ public class S : MonoBehaviour
     // I is for Instance
     public static S I { get; private set; }
 
+    // References
     public InputManager IM { get; private set; }
+    public GameManager GameManager { get; private set; }
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class S : MonoBehaviour
         I = this;
 
         IM = GetComponentInChildren<InputManager>();
+        GameManager = GetComponentInChildren<GameManager>();
 
         DontDestroyOnLoad(gameObject);
     }
