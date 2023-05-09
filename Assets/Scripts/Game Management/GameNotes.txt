@@ -1,7 +1,10 @@
 
 TODO:
 
-Paint walkable paths on the terrain for NavMeshAgent to follow. 
-
 Put big colliders on the paths to trigger events, and one on the top of the mountain end goal area. 
 
+Have camera follow the mountain guide by default, but if you move the camera manually, it stops following the guide until
+	you push space to recenter on the guide. 
+
+Draw little icons for the instructions, or get them. 
+	Need WASD/Arrow Keys, LMB, RMB, Mouse wheel, and space. 
