@@ -49,9 +49,10 @@ public class Bear : MonoBehaviour
     {
         if (_triggered)
         {
-            if (Vector3.Distance(transform.position, _guideOriginalPosition) < 0.5f)
+            if (Vector3.Distance(transform.position, _guideOriginalPosition) < 1f)
             {
                 GoBackToCave();
+                _triggered = false;
             }
         }
     }

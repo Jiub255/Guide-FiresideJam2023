@@ -88,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer(InputAction.CallbackContext context)
     {
+        //Debug.Log($"MovePlayer called, Pointer over UI: {_pointerOverUI}");
         if (!_pointerOverUI)
         {
             RaycastHit hit;

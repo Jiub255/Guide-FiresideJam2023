@@ -8,3 +8,11 @@ Have camera follow the mountain guide by default, but if you move the camera man
 
 Draw little icons for the instructions, or get them. 
 	Need WASD/Arrow Keys, LMB, RMB, Mouse wheel, and space. 
+
+Bonus Events:
+	Have caves be good or bad, depending on whether or not there's a bear inside. 
+	Waterfalls for good
+	Beehives for bad
+	Seeing wolves for good? or bad?
+
+
