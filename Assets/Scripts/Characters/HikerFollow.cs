@@ -64,7 +64,7 @@ public class HikerFollow : MonoBehaviour
         }
     }
 
-    private void Retreat(Vector3 _)
+    private void Retreat(Vector3 _, int __)
     {
         _running = true;
         _navMeshAgent.speed = _runSpeed;

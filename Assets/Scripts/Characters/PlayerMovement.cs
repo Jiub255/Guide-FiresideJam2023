@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         S.I.IM.PC.World.MovePlayer.performed -= MovePlayer;
     }
 
-    private void Retreat(Vector3 _)
+    private void Retreat(Vector3 _, int __)
     {
         _running = true;
         _navMeshAgent.speed = _runSpeed;

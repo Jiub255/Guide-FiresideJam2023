@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,5 +12,10 @@ public class GameManager : MonoBehaviour
         // Shouldn't be a problem since nothing else depends on time in game, as long as this value 
         // gets set early and doesn't change too much. Could ruin other animations or the "enjoyment bar" otherwise. 
         Time.timeScale = _timeScaleMultiplier;
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

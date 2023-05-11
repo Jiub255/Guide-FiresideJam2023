@@ -12,18 +12,18 @@ public class S : MonoBehaviour
 
     private void Awake()
     {
-        if (I != null && I != this)
+        /*if (I != null && I != this)
         {
             Debug.LogWarning("Found more than one S (Singleton) in the scene.");
             Destroy(this.gameObject);
             return;
-        }
+        }*/
 
         I = this;
 
         IM = GetComponentInChildren<InputManager>();
         GameManager = GetComponentInChildren<GameManager>();
 
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
     }
 }

@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class AreaTrigger : MonoBehaviour
 {
-    public static event Action<Vector3> OnAreaTriggered;
+    public static event Action<Vector3, int> OnAreaTriggered;
+
+    [SerializeField]
+    private int _enjoymentAmount;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,7 +14,7 @@ public class AreaTrigger : MonoBehaviour
         if (other.GetComponent<PlayerMovement>())
         {
             //Debug.Log("PlayerMovement found");
-            OnAreaTriggered?.Invoke(other.transform.position);
+            OnAreaTriggered?.Invoke(other.transform.position, _enjoymentAmount);
         }
     }
 }

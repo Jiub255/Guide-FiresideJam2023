@@ -34,7 +34,7 @@ public class Bear : MonoBehaviour
     // Then it goes back to its cave? 
 
     // Called by guide entering area collider. 
-    private void GoToHikersPosition(Vector3 position)
+    private void GoToHikersPosition(Vector3 position, int _)
     {
         if (!_triggered)
         {
