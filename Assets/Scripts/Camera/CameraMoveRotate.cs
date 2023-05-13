@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class CameraMoveRotate : MonoBehaviour
 
     private Vector3 _forward;
     private Vector3 _right;
+    private InputAction _moveCameraVerticallyAction;
 
     [SerializeField, Range(0f, 2f), Header("Rotate")]
     private float _rotationSpeed = 0.15f;
@@ -51,12 +53,14 @@ public class CameraMoveRotate : MonoBehaviour
         _screenWidth = Screen.width;
         _screenHeight = Screen.height;
         _edgeDistance = _screenWidth * (_percentDistanceFromEdges / 100);
+        _moveCameraVerticallyAction = S.I.IM.PC.World.MoveCameraVertically;
         _moveCameraAction = S.I.IM.PC.World.MoveCamera;
         _mouseDeltaAction = S.I.IM.PC.World.MouseDelta;
         _transform = transform;
         _following = true;
 
         S.I.IM.PC.World.CenterOnPlayer.performed += CenterOnGuide;
+        // WaterfallTrigger.OnWaterfallTriggeredStatic += CenterOnGuideFilter;
 
         // Center on player. 
         _transform.position = _guideTransform.position;
@@ -68,7 +72,14 @@ public class CameraMoveRotate : MonoBehaviour
     private void OnDisable()
     {
         S.I.IM.PC.World.CenterOnPlayer.performed -= CenterOnGuide;
+       // WaterfallTrigger.OnWaterfallTriggeredStatic -= CenterOnGuideFilter;
     }
+
+    // TODO - This isn't working well, looks stupid. 
+    /*    private void CenterOnGuideFilter(int _, Transform __)
+        {
+            CenterOnGuide(new InputAction.CallbackContext());
+        }*/
 
     private void LateUpdate()
     {
@@ -123,6 +134,7 @@ public class CameraMoveRotate : MonoBehaviour
         _forward.y = 0f;
         _right.y = 0f;
 
+
         // Normalize them
         _forward.Normalize();
         _right.Normalize();
@@ -131,7 +143,11 @@ public class CameraMoveRotate : MonoBehaviour
     private void KeyboardMove()
     {
         // Get input
-        Vector2 movement = _moveCameraAction.ReadValue<Vector2>();
+        Vector3 horizontalMovement = _moveCameraAction.ReadValue<Vector2>();
+        Vector3 verticalMovement = Vector3.forward * _moveCameraVerticallyAction.ReadValue<float>();
+        Vector3 movement = horizontalMovement + verticalMovement;
+        // Normalize or not? 
+       // movement.Normalize();
 
         if (movement.sqrMagnitude > 0.1f)
         {
@@ -139,7 +155,7 @@ public class CameraMoveRotate : MonoBehaviour
             _following = false;
 
             // Translate movement vector to world space
-            Vector3 keyboardMovement = (_forward * movement.y) + (_right * movement.x);
+            Vector3 keyboardMovement = (_forward * movement.y) + (_right * movement.x) + (Vector3.up * movement.z);
 
             // Move
             _transform.position += keyboardMovement * _movementSpeed * Time.unscaledDeltaTime;

@@ -1,33 +1,40 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnjoymentMeter : MonoBehaviour
 {
+    public static event Action<float> OnWinGame;
+
     [SerializeField]
     private Image _enjoymentFillBar;
 	[SerializeField]
 	private int _enjoymentMax = 1000;
     [SerializeField, Tooltip("In enjoyment units/second")]
-    private int _enjoymentLossRate = 5;
+    private int _enjoymentLossRate = 2;
     [SerializeField]
     private GameObject _loseScreen;
 
 	private int _enjoyment;
     private float _timer = 1f;
+    private Transform _transform;
 
     private void Start()
     {
         _enjoyment = _enjoymentMax;
+        _transform = transform;
 
         BearTrigger.OnBearTriggeredStatic += ChangeEnjoyment;
-        WaterfallTrigger.OnWaterfallTriggeredStatic += ChangeEnjoyment;
+        ViewpointTrigger.OnViewpointTriggeredStatic += ChangeEnjoymentFilter;
+        EndingTrigger.OnWinGame += () => { OnWinGame?.Invoke(_enjoyment); };
     }
 
     private void OnDisable()
     {
         BearTrigger.OnBearTriggeredStatic -= ChangeEnjoyment;
-        WaterfallTrigger.OnWaterfallTriggeredStatic -= ChangeEnjoyment;
+        ViewpointTrigger.OnViewpointTriggeredStatic -= ChangeEnjoymentFilter;
+        EndingTrigger.OnWinGame -= () => { OnWinGame?.Invoke(_enjoyment); };
     }
 
     private void Update()
@@ -38,6 +45,12 @@ public class EnjoymentMeter : MonoBehaviour
             _timer = 1f;
             ChangeEnjoyment(-_enjoymentLossRate);
         }
+    }
+
+    // Called by events from special area colliders. 
+    private void ChangeEnjoymentFilter(int amount, Transform _, Transform __)
+    {
+        ChangeEnjoyment(amount);
     }
 
     // Called by events from special area colliders. 

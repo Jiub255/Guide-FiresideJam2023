@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 // Put this on Camera Follower
@@ -5,12 +7,12 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField]
     private Transform _follow;
-
     [SerializeField]
     private Transform _lookAt;
-
     [SerializeField, Range(0.1f, 1.0f)]
     private float _smoothTime = 0.3f;
+    [SerializeField]
+    private float _lookDuration = 2f;
 
     private Vector3 _velocity = Vector3.zero;
     private Transform _transform;
@@ -21,6 +23,37 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         _transform = transform;
+
+        ViewpointTrigger.OnViewpointTriggeredStatic += LookAtWaterfall;
+        EndingTrigger.OnEndingTriggeredStatic += EndingView;
+    }
+
+    private void OnDisable()
+    {
+        ViewpointTrigger.OnViewpointTriggeredStatic -= LookAtWaterfall;
+        EndingTrigger.OnEndingTriggeredStatic -= EndingView;
+    }
+
+    private void EndingView(Transform followTransform, Transform lookAtTransform)
+    {
+        _follow = followTransform;
+        _lookAt = lookAtTransform;
+    }
+
+    private void LookAtWaterfall(int _, Transform cameraPosition, Transform lookAt)
+    {
+        StartCoroutine(LookAtWaterfallCoroutine(cameraPosition, lookAt));
+    }
+
+    private IEnumerator LookAtWaterfallCoroutine(Transform cameraPosition, Transform lookAt)
+    {
+        Transform originalCameraPosition = _follow;
+        Transform originalLookAt = _lookAt;
+        _follow = cameraPosition;
+        _lookAt = lookAt;
+        yield return new WaitForSecondsRealtime(_lookDuration);
+        _follow = originalCameraPosition;
+        _lookAt = originalLookAt;
     }
 
     private void Update()

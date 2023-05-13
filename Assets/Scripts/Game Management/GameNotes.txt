@@ -1,9 +1,8 @@
 
 TODO:
 
-Fix bear event
-	Have the "Retreat" method make them run forward instead of backwards, and put a skinny box collider going straight
-		out of the front of the bear cave. 
+Have non-bear caves too.
+	Look the same as bear caves, but you can go in and get points instead of getting chased and losing points. 
 
 Put big colliders on the paths to trigger events, and one on the top of the mountain end goal area. 
 

@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MoveCameraVertically",
+                    "type": "PassThrough",
+                    "id": "6644cde6-7fc3-4e3f-b4f2-8fe6abd821e0",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -238,13 +247,79 @@
                 {
                     "name": "",
                     "id": "99f35fd3-bd02-4f27-a44d-1afa3198e83a",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "CenterOnPlayer",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Shift/Space",
+                    "id": "42e11815-bc33-44ff-806e-8dbac2844a43",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "7ae990a8-c000-4dc6-a47c-8aae7257830a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "295528ef-e354-41d2-b43c-40368de6c0ae",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "PageUp/Down",
+                    "id": "060c63eb-943f-4416-8bd3-9e7bc04870e8",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "af0b35e7-48c0-41c6-93ea-473356c64658",
+                    "path": "<Keyboard>/pageDown",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "db6a6bca-1c55-4e19-b375-c2cc54b5837f",
+                    "path": "<Keyboard>/pageUp",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveCameraVertically",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
