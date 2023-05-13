@@ -176,6 +176,7 @@ MonoBehaviour:
   _enjoymentAmount: 100
   _cameraPositionTransform: {fileID: 1136943763219951851}
   _lookAtTransform: {fileID: 2167165639472422159}
+  _viewpointClip: {fileID: 8300000, guid: 2cd81c203baee3341a9601f115bfcd0d, type: 3}
 --- !u!1 &7014708725635139643
 GameObject:
   m_ObjectHideFlags: 0

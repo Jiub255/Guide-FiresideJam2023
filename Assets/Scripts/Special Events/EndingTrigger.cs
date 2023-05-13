@@ -14,6 +14,8 @@ public class EndingTrigger : MonoBehaviour
     private Transform _endingCameraPosition;
     [SerializeField]
     private Transform _focalPoint;
+    [SerializeField]
+    private AudioClip _victoryMusicClip;
 
     private bool _triggered = false;
 
@@ -39,6 +41,8 @@ public class EndingTrigger : MonoBehaviour
 
     private IEnumerator RotateView()
     {
+        S.I.AudioManager.PlaySoundEffect(_victoryMusicClip);
+
         float timer = 0f;
         float duration = 4f;
         Quaternion startValue = Quaternion.Euler(0f, 0f, 0f);

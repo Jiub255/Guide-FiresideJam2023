@@ -14,6 +14,8 @@ public class ViewpointTrigger : MonoBehaviour
     private Transform _cameraPositionTransform;
     [SerializeField]
     private Transform _lookAtTransform;
+    [SerializeField]
+    private AudioClip _viewpointClip;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +30,7 @@ public class ViewpointTrigger : MonoBehaviour
            // OnViewpointTriggered?.Invoke(other.transform.position);
             OnViewpointTriggeredStatic?.Invoke(_enjoymentAmount, _cameraPositionTransform, _lookAtTransform);
             gameObject.SetActive(false);
+            S.I.AudioManager.PlaySoundEffect(_viewpointClip);
         }
     }
 }

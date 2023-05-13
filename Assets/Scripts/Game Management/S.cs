@@ -9,6 +9,7 @@ public class S : MonoBehaviour
     // References
     public InputManager IM { get; private set; }
     public GameManager GameManager { get; private set; }
+    public AudioManager AudioManager { get; private set; }
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class S : MonoBehaviour
 
         IM = GetComponentInChildren<InputManager>();
         GameManager = GetComponentInChildren<GameManager>();
+        AudioManager = GetComponentInChildren<AudioManager>();
 
        // DontDestroyOnLoad(gameObject);
     }

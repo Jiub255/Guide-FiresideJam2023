@@ -943,6 +943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enjoymentAmount: -100
+  _bearClip: {fileID: 8300000, guid: 6443a94bd15c5624a811282e62b88d70, type: 3}
 --- !u!1 &4583116654938202665
 GameObject:
   m_ObjectHideFlags: 0

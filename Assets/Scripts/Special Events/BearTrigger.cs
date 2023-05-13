@@ -10,6 +10,8 @@ public class BearTrigger : MonoBehaviour
 
     [SerializeField]
     private int _enjoymentAmount;
+    [SerializeField]
+    AudioClip _bearClip;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +22,7 @@ public class BearTrigger : MonoBehaviour
             // TODO - Have the camera center on player when the bear gets triggered. 
             OnBearTriggered?.Invoke(other.transform.position);
             OnBearTriggeredStatic?.Invoke(_enjoymentAmount);
+            S.I.AudioManager.PlaySoundEffect(_bearClip);
         }
     }
 }
