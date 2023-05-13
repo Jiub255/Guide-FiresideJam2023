@@ -15,4 +15,10 @@ Bonus Events:
 	Beehives for bad
 	Seeing wolves for good? or bad?
 
+CREDITS:
 
+SFX by ZapSplat
+Forest background sounds by Nox Sound
+Bear by Blink
+Human character animations by Mixamo
+All other visual assets by Polygon
