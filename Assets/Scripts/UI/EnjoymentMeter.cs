@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnjoymentMeter : MonoBehaviour
 {
     public static event Action<float> OnWinGame;
+    public static event Action OnLoseGame;
 
     [SerializeField]
     private Image _enjoymentFillBar;
@@ -30,6 +31,7 @@ public class EnjoymentMeter : MonoBehaviour
         ViewpointTrigger.OnViewpointTriggeredStatic += ChangeEnjoymentFilter;
         EndingTrigger.OnWinGame += () => { _enjoymentPaused = true; OnWinGame?.Invoke(_enjoyment); };
         IntroScreen.OnGameStart += () => { _enjoymentPaused = false; };
+        HikerFollow.OnLoseAnimationOver += ResetLevel;
     }
 
     private void OnDisable()
@@ -38,6 +40,7 @@ public class EnjoymentMeter : MonoBehaviour
         ViewpointTrigger.OnViewpointTriggeredStatic -= ChangeEnjoymentFilter;
         EndingTrigger.OnWinGame -= () => { _enjoymentPaused = true; OnWinGame?.Invoke(_enjoyment); };
         IntroScreen.OnGameStart -= () => { _enjoymentPaused = false; };
+        HikerFollow.OnLoseAnimationOver -= ResetLevel;
     }
 
     private void Update()
@@ -72,7 +75,8 @@ public class EnjoymentMeter : MonoBehaviour
         else if (_enjoyment < 0)
         {
             _enjoyment = 0;
-            ResetLevel();
+            OnLoseGame?.Invoke();
+            //ResetLevel();
         }
         int endingEnjoyment = _enjoyment;
 

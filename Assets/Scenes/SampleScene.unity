@@ -3102,15 +3102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.33001
+      value: 4.9600096
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.429999
+      value: 0.37999892
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.7800007
+      value: 8.670001
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3148,6 +3148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hiker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
+      propertyPath: _startingPoint
+      value: 
+      objectReference: {fileID: 1483817556}
     - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: _retreatDistance
       value: 15
@@ -4549,15 +4553,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.32
+      value: 8.95
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.43
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.42
+      value: 9.31
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4596,6 +4600,10 @@ PrefabInstance:
       value: Hiker (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
+      propertyPath: _startingPoint
+      value: 
+      objectReference: {fileID: 1483817556}
+    - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: _retreatDistance
       value: 15
       objectReference: {fileID: 0}
@@ -4613,6 +4621,37 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 66726266de844d9429d9470341916e07, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04391f588342ea641a2aae9114383860, type: 3}
+--- !u!1 &1483817555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1483817556}
+  m_Layer: 0
+  m_Name: Starting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1483817556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483817555}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 0, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1508649635
 GameObject:
   m_ObjectHideFlags: 0
@@ -7156,15 +7195,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.0100026
+      value: 6.6400023
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.429999
+      value: 0.37999892
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.2999897
+      value: 7.18999
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666352, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7199,6 +7238,10 @@ PrefabInstance:
       value: Hiker
       objectReference: {fileID: 0}
     - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
+      propertyPath: _startingPoint
+      value: 
+      objectReference: {fileID: 1483817556}
+    - target: {fileID: 6541320396393666365, guid: 04391f588342ea641a2aae9114383860, type: 3}
       propertyPath: _retreatDistance
       value: 15
       objectReference: {fileID: 0}
@@ -7221,15 +7264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5189809279174150989, guid: 3b07f0d76b91559418f00755eff16a54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.33001
+      value: 6.9600096
       objectReference: {fileID: 0}
     - target: {fileID: 5189809279174150989, guid: 3b07f0d76b91559418f00755eff16a54, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.429999
+      value: 0.37999892
       objectReference: {fileID: 0}
     - target: {fileID: 5189809279174150989, guid: 3b07f0d76b91559418f00755eff16a54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.6400013
+      value: 5.5300016
       objectReference: {fileID: 0}
     - target: {fileID: 5189809279174150989, guid: 3b07f0d76b91559418f00755eff16a54, type: 3}
       propertyPath: m_LocalRotation.w
