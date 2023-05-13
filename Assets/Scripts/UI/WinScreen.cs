@@ -23,7 +23,17 @@ public class WinScreen : MonoBehaviour
 
     private void SetupWinScreen(float enjoyment)
     {
-        _ratingText.text = $"{CalculateGuideRating(enjoyment).ToString()} Stars!";
+        float rating = CalculateGuideRating(enjoyment);
+        string ratingString;
+        if (rating > 0.95f && rating < 1.05f)
+        {
+            ratingString = "1 Star!";
+        }
+        else
+        {
+            ratingString = $"{rating.ToString()} Stars!";
+        }
+        _ratingText.text = ratingString;
         _winScreen.SetActive(true);
     }
 

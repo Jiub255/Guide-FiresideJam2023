@@ -19,7 +19,7 @@ public class EnjoymentMeter : MonoBehaviour
 	private int _enjoyment;
     private float _timer = 1f;
     private Transform _transform;
-    private bool _beatGame = false;
+    private bool _enjoymentPaused = true;
 
     private void Start()
     {
@@ -28,19 +28,21 @@ public class EnjoymentMeter : MonoBehaviour
 
         BearTrigger.OnBearTriggeredStatic += ChangeEnjoyment;
         ViewpointTrigger.OnViewpointTriggeredStatic += ChangeEnjoymentFilter;
-        EndingTrigger.OnWinGame += () => { _beatGame = true; OnWinGame?.Invoke(_enjoyment); };
+        EndingTrigger.OnWinGame += () => { _enjoymentPaused = true; OnWinGame?.Invoke(_enjoyment); };
+        IntroScreen.OnGameStart += () => { _enjoymentPaused = false; };
     }
 
     private void OnDisable()
     {
         BearTrigger.OnBearTriggeredStatic -= ChangeEnjoyment;
         ViewpointTrigger.OnViewpointTriggeredStatic -= ChangeEnjoymentFilter;
-        EndingTrigger.OnWinGame -= () => { _beatGame = true; OnWinGame?.Invoke(_enjoyment); };
+        EndingTrigger.OnWinGame -= () => { _enjoymentPaused = true; OnWinGame?.Invoke(_enjoyment); };
+        IntroScreen.OnGameStart -= () => { _enjoymentPaused = false; };
     }
 
     private void Update()
     {
-        if (!_beatGame)
+        if (!_enjoymentPaused)
         {
             _timer -= Time.deltaTime;
             if (_timer <= 0f)

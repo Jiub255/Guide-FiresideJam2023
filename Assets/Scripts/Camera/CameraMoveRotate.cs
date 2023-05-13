@@ -59,7 +59,7 @@ public class CameraMoveRotate : MonoBehaviour
         _transform = transform;
         _following = true;
 
-        S.I.IM.PC.World.CenterOnPlayer.performed += CenterOnGuide;
+       // S.I.IM.PC.World.CenterOnPlayer.performed += CenterOnGuide;
         // WaterfallTrigger.OnWaterfallTriggeredStatic += CenterOnGuideFilter;
 
         // Center on player. 
@@ -71,7 +71,7 @@ public class CameraMoveRotate : MonoBehaviour
 
     private void OnDisable()
     {
-        S.I.IM.PC.World.CenterOnPlayer.performed -= CenterOnGuide;
+       // S.I.IM.PC.World.CenterOnPlayer.performed -= CenterOnGuide;
        // WaterfallTrigger.OnWaterfallTriggeredStatic -= CenterOnGuideFilter;
     }
 
@@ -89,7 +89,7 @@ public class CameraMoveRotate : MonoBehaviour
         {
             GetVectors();
 
-            KeyboardMove();
+          //  KeyboardMove();
 
             if (S.I.IM.PC.World.RotateCamera.IsPressed())
             {
