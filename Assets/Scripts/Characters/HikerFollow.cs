@@ -26,13 +26,13 @@ public class HikerFollow : MonoBehaviour
         _transform = transform;
         _retreatTimer = _retreatTimerLength;
 
-        AreaTrigger.OnAreaTriggered += Retreat;
+        BearTrigger.OnBearTriggeredStatic += Retreat;
         PlayerMovement.OnStart += (playerTransform) => _playerTransform = playerTransform;
     }
 
     private void OnDisable()
     {
-        AreaTrigger.OnAreaTriggered -= Retreat;
+        BearTrigger.OnBearTriggeredStatic -= Retreat;
         PlayerMovement.OnStart -= (playerTransform) => _playerTransform = playerTransform;
     }
 
@@ -64,11 +64,11 @@ public class HikerFollow : MonoBehaviour
         }
     }
 
-    private void Retreat(Vector3 _, int __)
+    private void Retreat(int _)
     {
         _running = true;
         _navMeshAgent.speed = _runSpeed;
-        Vector3 retreatDirection = (-_navMeshAgent.velocity).normalized;
+        Vector3 retreatDirection = (/*-*/_navMeshAgent.velocity).normalized;
         _retreatPosition = _transform.position + (retreatDirection * _retreatDistance);
         _navMeshAgent.destination = _retreatPosition;
         _retreatTimer = _retreatTimerLength;

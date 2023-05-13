@@ -4,6 +4,8 @@ using UnityEngine.AI;
 public class Bear : MonoBehaviour
 {
     [SerializeField]
+    private BearTrigger _bearTrigger;
+    [SerializeField]
     private float _runSpeed = 5f;
     [SerializeField]
     private float _walkSpeed = 1.9f; 
@@ -12,19 +14,21 @@ public class Bear : MonoBehaviour
     private Vector3 _startingPosition;
     private Vector3 _guideOriginalPosition;
     private bool _triggered = false;
+    private Transform _transform;
 
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _startingPosition = transform.position;
         _triggered = false;
+        _transform = transform;
 
-        AreaTrigger.OnAreaTriggered += GoToHikersPosition;
+        _bearTrigger.OnBearTriggered += GoToHikersPosition;
     }
 
     private void OnDisable()
     {
-        AreaTrigger.OnAreaTriggered -= GoToHikersPosition;
+        _bearTrigger.OnBearTriggered -= GoToHikersPosition;
     }
     // Set animator parameter trigger to "attack" or whatever, 
     // and have the whole attack process as one animation. 
@@ -34,7 +38,7 @@ public class Bear : MonoBehaviour
     // Then it goes back to its cave? 
 
     // Called by guide entering area collider. 
-    private void GoToHikersPosition(Vector3 position, int _)
+    private void GoToHikersPosition(Vector3 position)
     {
         if (!_triggered)
         {
@@ -49,7 +53,7 @@ public class Bear : MonoBehaviour
     {
         if (_triggered)
         {
-            if (Vector3.Distance(transform.position, _guideOriginalPosition) < 1f)
+            if (Vector3.Distance(_transform.position, _guideOriginalPosition) < 1f)
             {
                 GoBackToCave();
                 _triggered = false;

@@ -3802,7 +3802,7 @@ MonoBehaviour:
   _terrainLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  _retreatDistance: 10
+  _retreatDistance: 15
   _retreatTimerLength: 3
   _runSpeed: 5
   _walkSpeed: 1.9

@@ -43,21 +43,21 @@ public class PlayerMovement : MonoBehaviour
         // Sends to the hikers so they can have the transform to follow. 
         OnStart?.Invoke(transform);
 
-        AreaTrigger.OnAreaTriggered += Retreat;
+        BearTrigger.OnBearTriggeredStatic += Retreat;
         S.I.IM.PC.World.MovePlayer.performed += MovePlayer;
     }
 
     private void OnDisable()
     {
-        AreaTrigger.OnAreaTriggered -= Retreat;
+        BearTrigger.OnBearTriggeredStatic -= Retreat;
         S.I.IM.PC.World.MovePlayer.performed -= MovePlayer;
     }
 
-    private void Retreat(Vector3 _, int __)
+    private void Retreat(int _)
     {
         _running = true;
         _navMeshAgent.speed = _runSpeed;
-        Vector3 retreatDirection = (-_navMeshAgent.velocity).normalized;
+        Vector3 retreatDirection = (/*-*/_navMeshAgent.velocity).normalized;
         Vector3 retreatPosition = _transform.position + (retreatDirection * _retreatDistance);
         _navMeshAgent.destination = retreatPosition;
         _retreatTimer = _retreatTimerLength;

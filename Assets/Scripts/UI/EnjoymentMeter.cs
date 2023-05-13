@@ -20,30 +20,32 @@ public class EnjoymentMeter : MonoBehaviour
     {
         _enjoyment = _enjoymentMax;
 
-        AreaTrigger.OnAreaTriggered += ChangeEnjoyment;
+        BearTrigger.OnBearTriggeredStatic += ChangeEnjoyment;
+        WaterfallTrigger.OnWaterfallTriggeredStatic += ChangeEnjoyment;
     }
 
     private void OnDisable()
     {
-        AreaTrigger.OnAreaTriggered -= ChangeEnjoyment;
+        BearTrigger.OnBearTriggeredStatic -= ChangeEnjoyment;
+        WaterfallTrigger.OnWaterfallTriggeredStatic -= ChangeEnjoyment;
     }
 
     private void Update()
     {
-        _timer -= Time.unscaledDeltaTime;
+        _timer -= Time.deltaTime;
         if (_timer <= 0f)
         {
             _timer = 1f;
-            ChangeEnjoyment(Vector3.zero, -_enjoymentLossRate);
+            ChangeEnjoyment(-_enjoymentLossRate);
         }
     }
 
     // Called by events from special area colliders. 
-    private void ChangeEnjoyment(Vector3 _, int amount)
+    private void ChangeEnjoyment(int amount)
     {
         int startingEnjoyment = _enjoyment;
         _enjoyment += amount;
-        Debug.Log($"Starting enjoyment: {startingEnjoyment}, Ending enjoyment {_enjoyment}");
+        //Debug.Log($"Starting enjoyment: {startingEnjoyment}, Ending enjoyment {_enjoyment}");
         if (_enjoyment > _enjoymentMax)
         {
             _enjoyment = _enjoymentMax;
@@ -77,7 +79,7 @@ public class EnjoymentMeter : MonoBehaviour
         while (time < 1f)
         {
             _enjoymentFillBar.fillAmount = Mathf.Lerp(startValue, endValue, time);
-            time += Time.unscaledDeltaTime;
+            time += Time.deltaTime;
             yield return null;
         }
 
