@@ -75,6 +75,7 @@ public class EnjoymentMeter : MonoBehaviour
         else if (_enjoyment < 0)
         {
             _enjoyment = 0;
+            _enjoymentPaused = true;
             OnLoseGame?.Invoke();
             //ResetLevel();
         }
